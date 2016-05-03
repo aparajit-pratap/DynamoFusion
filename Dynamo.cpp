@@ -5,6 +5,8 @@
 
 #include <sstream>
 
+#include "DynamoManagedWrapper\DynamoManagedWrapper.h"
+
 using namespace adsk::core;
 using namespace adsk::fusion;
 using namespace adsk::cam;
@@ -33,10 +35,12 @@ public:
 		if (!parentDefinition)
 			return;
 
-		std::stringstream ss;
+		/*std::stringstream ss;
 		ss << "command: " + parentDefinition->id() << " executed successfully";
 
-		ui->messageBox(ss.str());
+		ui->messageBox(ss.str());*/
+		DynamoManagedWrapper::LoadDynamo();
+		
 	}
 };
 
@@ -82,7 +86,7 @@ extern "C" XI_EXPORT bool run(const char* context)
 	if (!commandDefinitions)
 		return false;
 
-	ui->messageBox("in run");
+	ui->messageBox("running!");
 
 	// Object Model Reference:
 	// http://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/images/Fusion.pdf
