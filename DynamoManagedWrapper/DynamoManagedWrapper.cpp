@@ -11,9 +11,8 @@ using namespace System;
 using namespace DynamoSandboxWrapper;
 
 [STAThreadAttribute]
-void DynamoManagedWrapper::LoadDynamo()
+void DynamoManagedWrapper::LoadDynamo(const char* asm_location)
 {
-	String^ asmLocation = 
-		gcnew String("C:\\Users\pratapa.ADS\\AppData\\Local\\Autodesk\\webdeploy\\production\\c076e205c02e6f8f9c6eac7820ccca6953c0c53a");
+	String^ asmLocation = gcnew String(asm_location);
 	DynamoWrapper::LoadDynamo(asmLocation);
 }

@@ -1,15 +1,10 @@
-
-#include <Core/CoreAll.h>
-#include <Fusion/FusionAll.h>
-#include <CAM/CAMAll.h>
+#include "Dynamo.h"
 
 #include <sstream>
 
 #include "DynamoManagedWrapper\DynamoManagedWrapper.h"
 
-using namespace adsk::core;
-using namespace adsk::fusion;
-using namespace adsk::cam;
+
 
 const std::string commandIdOnModelWorkspace = "launchCommandOnWorkspaceDynamo";
 const std::string commandIdOnPanel = "launchCommandOnPanelDynamo";
@@ -39,7 +34,9 @@ public:
 		ss << "command: " + parentDefinition->id() << " executed successfully";
 
 		ui->messageBox(ss.str());*/
-		DynamoManagedWrapper::LoadDynamo();
+		const char* asm_location = 
+			"C:\\Users\pratapa.ADS\\AppData\\Local\\Autodesk\\webdeploy\\production\\c076e205c02e6f8f9c6eac7820ccca6953c0c53a";
+		DynamoManagedWrapper::LoadDynamo(asm_location);
 		
 	}
 };
