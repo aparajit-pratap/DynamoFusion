@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dynamo", "Dynamo.vcxproj", "{D7CBB035-8CC0-4576-9C72-5076E079586B}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamoManagedWrapper", "DynamoManagedWrapper\DynamoManagedWrapper.vcxproj", "{1AEFDE8A-9763-4089-9E2B-A04F2D01D8F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynaFusion", "DynaFusion\DynaFusion.csproj", "{8898B5D2-7A02-4F93-80EC-CB5081852B0B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FusionManagedWrapper", "FusionManagedWrapper\FusionManagedWrapper.vcxproj", "{B77DD52F-5F08-4824-BA4E-B1411354D585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamoSandboxWrapper", "DynamoSandboxWrapper\DynamoSandboxWrapper.csproj", "{8BAD64A0-ACED-4B00-993B-913828D4FE34}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamoAddin", "DynamoAddin\Dynamo.vcxproj", "{D7CBB035-8CC0-4576-9C72-5076E079586B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +23,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Debug|x64.ActiveCfg = Debug|x64
-		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Debug|x64.Build.0 = Debug|x64
-		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Debug|x86.ActiveCfg = Debug|x64
-		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|Any CPU.ActiveCfg = Release|x64
-		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x64.ActiveCfg = Release|x64
-		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x64.Build.0 = Release|x64
-		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x86.ActiveCfg = Release|x64
 		{1AEFDE8A-9763-4089-9E2B-A04F2D01D8F8}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{1AEFDE8A-9763-4089-9E2B-A04F2D01D8F8}.Debug|x64.ActiveCfg = Debug|x64
 		{1AEFDE8A-9763-4089-9E2B-A04F2D01D8F8}.Debug|x64.Build.0 = Debug|x64
@@ -61,6 +55,26 @@ Global
 		{B77DD52F-5F08-4824-BA4E-B1411354D585}.Release|x64.Build.0 = Release|x64
 		{B77DD52F-5F08-4824-BA4E-B1411354D585}.Release|x86.ActiveCfg = Release|Win32
 		{B77DD52F-5F08-4824-BA4E-B1411354D585}.Release|x86.Build.0 = Release|Win32
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Debug|x64.Build.0 = Debug|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Debug|x86.Build.0 = Debug|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Release|x64.ActiveCfg = Release|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Release|x64.Build.0 = Release|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Release|x86.ActiveCfg = Release|Any CPU
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34}.Release|x86.Build.0 = Release|Any CPU
+		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Debug|x64.ActiveCfg = Debug|x64
+		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Debug|x64.Build.0 = Debug|x64
+		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Debug|x86.ActiveCfg = Debug|x64
+		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|Any CPU.ActiveCfg = Release|x64
+		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x64.ActiveCfg = Release|x64
+		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x64.Build.0 = Release|x64
+		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,8 @@
 
 
 extern Ptr<Application> app;
-extern Ptr<UserInterface> ui;
+extern Ptr<UserInterface> ui; 
+extern Ptr<SelectionCommandInput> selectionInput;
 
 // The following ifdef block is the standard way of creating macros which make exporting 
 // from a DLL simpler. All files within this DLL are compiled with the DYNAMO_EXPORTS
@@ -24,4 +25,6 @@ class FUSION_API FusionCore
 public:
 	Ptr<SketchPoint> static pointByCoordinates(double x, double y, double z);
 	Ptr<SketchCircle> static circleByPointRadius( Ptr<Point3D> point, double r);
+
+	std::vector<Ptr<BRepBody>> static getSelectedEntities();
 };

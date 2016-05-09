@@ -27,3 +27,31 @@ Ptr<SketchCircle> FusionCore::circleByPointRadius( Ptr<Point3D> point, double r)
 
 	return circle;
 }
+
+std::vector<Ptr<BRepBody>> FusionCore::getSelectedEntities()
+{
+	//
+	// Create array for storing objects
+	//
+	std::vector<Ptr<BRepBody>> objects;
+
+	if (selectionInput == nullptr)
+		return objects;
+
+	int selCount = selectionInput->selectionCount();
+
+	//
+	// Store the objects in the array
+	//
+	for (size_t i = 0; i < selCount; i++)
+	{
+		objects.push_back(selectionInput->selection(i)->entity());
+
+		//
+		// Get Geometry Info
+		//
+		//BRepBodyGeometryInfo(ui, objects[i]);
+	}
+	return objects;
+}
+

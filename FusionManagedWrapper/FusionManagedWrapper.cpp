@@ -6,7 +6,40 @@
 
 using namespace FusionManagedWrapper;
 
-FusionCurve::FusionCurve(SketchCircle* pCurve) 
+cli::array<FusionEntity^>^ FusionEntity::getSelectedEntities()
+{
+	auto bodies = FusionCore::getSelectedEntities();
+	int size = bodies.size();
+	cli::array<FusionEntity^>^ bodyArray = gcnew cli::array<FusionEntity^>(size);
+	
+	for (int i = 0; i < size; i++)
+	{
+		bodyArray[i] = gcnew FusionSolid(bodies[i].detach());
+	}
+	return bodyArray;
+}
+
+FusionEntity::~FusionEntity()
+{
+	//m_pEntity->deleteMe();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+FusionSolid::FusionSolid(BRepBody* pSolid)
+{
+	m_pSolid = pSolid;
+}
+
+FusionSolid::~FusionSolid()
+{
+	m_pSolid->deleteMe();
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+FusionCurve::FusionCurve(SketchCircle* pCurve)
 {
 	m_pCurve = pCurve;
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8898B5D2-7A02-4F93-80EC-CB5081852B0B}</ProjectGuid>
+    <ProjectGuid>{8BAD64A0-ACED-4B00-993B-913828D4FE34}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DynaFusion</RootNamespace>
-    <AssemblyName>DynaFusion</AssemblyName>
+    <RootNamespace>DynamoSandboxWrapper</RootNamespace>
+    <AssemblyName>DynamoSandboxWrapper</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,26 +16,35 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\bin\AnyCPU\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\bin\AnyCPU\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DynamoServices">
-      <HintPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\bin\AnyCPU\Debug\DynamoServices.dll</HintPath>
+    <Reference Include="DynamoApplications, Version=1.0.1.1262, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\bin\AnyCPU\Debug\DynamoApplications.dll</HintPath>
     </Reference>
-    <Reference Include="ProtoGeometry">
-      <HintPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\extern\ProtoGeometry\ProtoGeometry.dll</HintPath>
+    <Reference Include="DynamoCore">
+      <HintPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\bin\AnyCPU\Debug\DynamoCore.dll</HintPath>
     </Reference>
+    <Reference Include="DynamoCoreWpf">
+      <HintPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\bin\AnyCPU\Debug\DynamoCoreWpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,16 +53,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fusion.cs" />
+    <Compile Include="DynamoFusionExtension.cs" />
+    <Compile Include="DynamoSandboxWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FusionManagedWrapper\FusionManagedWrapper.vcxproj">
-      <Project>{b77dd52f-5f08-4824-ba4e-b1411354d585}</Project>
-      <Name>FusionManagedWrapper</Name>
-    </ProjectReference>
+    <Content Include="DynamoFusionExtension_ViewExtensionDefinition.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

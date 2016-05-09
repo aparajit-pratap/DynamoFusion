@@ -1,4 +1,5 @@
 ﻿using Autodesk.DesignScript.Geometry;
+using Autodesk.DesignScript.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,14 @@ using FusionManagedWrapper;
 // This is the Dynamo-Fusion node library for Fusion specific nodes in Dynamo
 namespace DynaFusion
 {
-    public class Fusion
+    public static class Fusion
     {
+        [IsVisibleInDynamoLibrary(false)]
+        public static IEnumerable<FusionEntity> SelectEntity()
+        {
+            return FusionEntity.getSelectedEntities();
+        }
+
         public static FusionCurve ImportCurve(IEnumerable<Curve> curves)
         {
             var geometries = curves.ToArray();
