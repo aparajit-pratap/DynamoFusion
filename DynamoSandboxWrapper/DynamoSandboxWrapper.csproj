@@ -42,6 +42,10 @@
     <Reference Include="DynamoCoreWpf">
       <HintPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\bin\AnyCPU\Debug\DynamoCoreWpf.dll</HintPath>
     </Reference>
+    <Reference Include="DynamoShapeManager, Version=1.0.1.1274, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Documents\GitHub\Dynamo\bin\AnyCPU\Debug\DynamoShapeManager.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -56,12 +60,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamoFusionExtension.cs" />
     <Compile Include="DynamoSandboxWrapper.cs" />
+    <Compile Include="FusionPathResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DynamoFusionExtension_ViewExtensionDefinition.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
