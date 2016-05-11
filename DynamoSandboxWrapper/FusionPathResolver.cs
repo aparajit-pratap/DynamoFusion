@@ -39,7 +39,7 @@ namespace DynamoSandboxWrapper
             get { return string.Empty; }
         }
 
-        internal FusionPathResolver(string preloaderLocation)
+        internal FusionPathResolver(string preloaderLocation, string customNodeLibraryPath)
         {
             // If a suitable preloader cannot be found on the system, then do 
             // not add invalid path into additional resolution. The default 
@@ -49,6 +49,8 @@ namespace DynamoSandboxWrapper
             additionalResolutionPaths = new List<string>();
             
             additionalNodeDirectories = new List<string>();
+            if(!string.IsNullOrEmpty(customNodeLibraryPath))
+                additionalNodeDirectories.Add(customNodeLibraryPath);
 
             var fusionNodeLib = Path.Combine(preloaderLocation, "DynaFusion.dll");
 

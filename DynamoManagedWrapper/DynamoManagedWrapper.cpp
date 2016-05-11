@@ -3,10 +3,13 @@
 #include "stdafx.h"
 
 #using<DynamoSandboxWrapper.dll>
-
+#using<DynamoFusionNodeLib.dll>
+#using<DynamoCore.dll>
 
 using namespace System;
 using namespace DynamoSandboxWrapper;
+using namespace DynamoFusionNodeLib;
+using namespace Dynamo::Graph::Nodes;
 
 #include <msclr\auto_gcroot.h>
 
@@ -25,7 +28,9 @@ using namespace DynamoSandboxWrapper;
 
 class DynamoManagedWrapperPrivate
 {
-public: msclr::auto_gcroot<DynamoWrapper^> dynamoWrapper;
+public: 
+	msclr::auto_gcroot<DynamoWrapper^> dynamoWrapper;
+	msclr::auto_gcroot<SelectEntityNode^> nodeWrapper;
 };
 
 class DYNAMO_API DynamoManagedWrapper
@@ -35,6 +40,7 @@ private:
 	{
 		dynamoAPI = new DynamoManagedWrapperPrivate();
 		dynamoAPI->dynamoWrapper = gcnew DynamoWrapper();
+		
 	}
 
 	static DynamoManagedWrapper* wrapper;
@@ -59,7 +65,20 @@ public:
 
 	void CreateSelectionNode()
 	{
+
 		dynamoAPI->dynamoWrapper->CreateSelectionNode();
+	}
+
+	void CreateCustomSelectionNode()
+	{
+		if (!dynamoAPI->nodeWrapper)
+		{
+			SelectEntityNode^ node = gcnew SelectEntityNode();
+			dynamoAPI->dynamoWrapper->CreateCustomSelectionNode(node);
+			dynamoAPI->nodeWrapper = node;
+		}
+		else
+			dynamoAPI->nodeWrapper->OnNodeModified(true);
 	}
 };
 

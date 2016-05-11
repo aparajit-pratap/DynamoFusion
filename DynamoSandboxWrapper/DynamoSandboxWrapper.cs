@@ -1,4 +1,5 @@
 ﻿using Dynamo.Controls;
+using Dynamo.Graph.Nodes;
 using Dynamo.Interfaces;
 using Dynamo.Models;
 using Dynamo.Scheduler;
@@ -28,7 +29,19 @@ namespace DynamoSandboxWrapper
         
         public void CreateSelectionNode()
         {
+            if (dynamoViewModel == null)
+                return;
+
             var command = new DynamoModel.CreateNodeCommand(new[] { Guid.NewGuid() }, "Fusion.SelectEntity", 0, 0, true, false);
+            dynamoViewModel.ExecuteCommand(command);
+        }
+
+        public void CreateCustomSelectionNode(NodeModel node)
+        {
+            if (dynamoViewModel == null)
+                return;
+
+            var command = new DynamoModel.CreateNodeCommand(node, 0, 0, true, false);
             dynamoViewModel.ExecuteCommand(command);
         }
 
@@ -36,6 +49,8 @@ namespace DynamoSandboxWrapper
         {
             get
             {
+                // TODO: Use DynamoInstallDetective to find core path from Dynamo install folder
+                // OR use config file with the core path listed 
                 return @"C:\Users\pratapa.ADS\Documents\GitHub\Dynamo\bin\AnyCPU\Debug";
             }
         }
@@ -68,8 +83,10 @@ namespace DynamoSandboxWrapper
             {
                 var nodeLibraryPath = @"C:\Users\pratapa.ADS\AppData\Roaming\Autodesk\Autodesk Fusion 360\API\AddIns\DynamoFusion\DynaFusion\bin\Debug\";
 
-                //var model = Dynamo.Applications.StartupUtils.MakeModel(false, asmLocation);
-                var model = MakeModel(nodeLibraryPath);
+                //var customNodeLibraryPath = @"C:\Users\pratapa.ADS\AppData\Roaming\Autodesk\Autodesk Fusion 360\API\AddIns\DynamoFusion\Debug\";
+                var customNodeLibraryPath = string.Empty;
+
+                var model = MakeModel(nodeLibraryPath, customNodeLibraryPath);
 
                 dynamoViewModel = DynamoViewModel.Start(
                     new DynamoViewModel.StartConfiguration()
@@ -118,12 +135,12 @@ namespace DynamoSandboxWrapper
             }
         }
 
-        private static DynamoModel MakeModel(string nodeLibraryPath)
+        private static DynamoModel MakeModel(string nodeLibraryPath, string customNodeLibraryPath)
         {
             var version = LibraryVersion.Version222;
             var libGFolderName = string.Format("libg_{0}", ((int)version));
             var preloaderLocation = Path.Combine(DynamoCorePath, libGFolderName);
-            var geometryFactoryPath = Path.Combine(preloaderLocation, Utilities.GeometryFactoryAssembly);
+            var geometryFactoryPath = Path.Combine(preloaderLocation, DynamoShapeManager.Utilities.GeometryFactoryAssembly);
 
             var config = new DynamoModel.DefaultStartConfiguration()
             {
@@ -134,7 +151,7 @@ namespace DynamoSandboxWrapper
             config.UpdateManager = null;
             config.StartInTestMode = false;
             
-            config.PathResolver = new FusionPathResolver(nodeLibraryPath) as IPathResolver;
+            config.PathResolver = new FusionPathResolver(nodeLibraryPath, customNodeLibraryPath) as IPathResolver;
 
             var model = DynamoModel.Start(config);
             return model;

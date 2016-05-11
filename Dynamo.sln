@@ -4,14 +4,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamoManagedWrapper", "DynamoManagedWrapper\DynamoManagedWrapper.vcxproj", "{1AEFDE8A-9763-4089-9E2B-A04F2D01D8F8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8BAD64A0-ACED-4B00-993B-913828D4FE34} = {8BAD64A0-ACED-4B00-993B-913828D4FE34}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynaFusion", "DynaFusion\DynaFusion.csproj", "{8898B5D2-7A02-4F93-80EC-CB5081852B0B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FusionManagedWrapper", "FusionManagedWrapper\FusionManagedWrapper.vcxproj", "{B77DD52F-5F08-4824-BA4E-B1411354D585}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D7CBB035-8CC0-4576-9C72-5076E079586B} = {D7CBB035-8CC0-4576-9C72-5076E079586B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamoSandboxWrapper", "DynamoSandboxWrapper\DynamoSandboxWrapper.csproj", "{8BAD64A0-ACED-4B00-993B-913828D4FE34}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamoAddin", "DynamoAddin\Dynamo.vcxproj", "{D7CBB035-8CC0-4576-9C72-5076E079586B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1AEFDE8A-9763-4089-9E2B-A04F2D01D8F8} = {1AEFDE8A-9763-4089-9E2B-A04F2D01D8F8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamoFusionNodeLib", "DynamoFusionNodeLib\DynamoFusionNodeLib.csproj", "{12DA1088-4895-4966-91C4-930A8AAAA668}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +86,18 @@ Global
 		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x64.ActiveCfg = Release|x64
 		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x64.Build.0 = Release|x64
 		{D7CBB035-8CC0-4576-9C72-5076E079586B}.Release|x86.ActiveCfg = Release|x64
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Debug|x64.Build.0 = Debug|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Debug|x86.Build.0 = Debug|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Release|x64.ActiveCfg = Release|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Release|x64.Build.0 = Release|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Release|x86.ActiveCfg = Release|Any CPU
+		{12DA1088-4895-4966-91C4-930A8AAAA668}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

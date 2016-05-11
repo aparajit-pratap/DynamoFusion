@@ -1,10 +1,7 @@
 ﻿using Autodesk.DesignScript.Geometry;
 using Autodesk.DesignScript.Runtime;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using FusionManagedWrapper;
 
@@ -14,21 +11,29 @@ namespace DynaFusion
     public static class Fusion
     {
         [IsVisibleInDynamoLibrary(false)]
-        public static IEnumerable<FusionEntity> SelectEntity()
+        public static IEnumerable<Geometry> SelectEntity()
         {
-            return FusionEntity.getSelectedEntities();
+            var geometries = new List<Geometry>();
+            var entities = FusionEntity.getSelectedEntities();
+            foreach(var entity in entities)
+            {
+                geometries.AddRange(ToDynamoGeometry(entity));
+            }
+            return geometries;
         }
 
-        public static FusionCurve ImportCurve(IEnumerable<Curve> curves)
+        public static IEnumerable<FusionEntity> ImportGeometry(IEnumerable<Geometry> geometries)
         {
-            var geometries = curves.ToArray();
-            var circle = geometries[0] as Circle;
-            FusionCurve entity = null;
-            if (circle != null)
+            var entities = new List<FusionEntity>();
+            foreach (var geometry in geometries)
             {
-                entity = ToFusionCurve(circle);
+                var curve = geometry as Curve;
+                if (curve != null)
+                {
+                    entities.Add(ToFusionCurve(curve));
+                }
             }
-            return entity;
+            return entities;
         }
 
         private static FusionCurve ToFusionCurve(Curve curve)
@@ -40,6 +45,17 @@ namespace DynaFusion
                 return FusionCurve.createCircle(point.X, point.Y, point.Z, cv.Radius);
             }
             return null;
+        }
+
+        private static IEnumerable<Geometry> ToDynamoGeometry(FusionEntity entity)
+        {
+            var geometries = new List<Geometry>();
+            var fusionSolid = entity as FusionSolid;
+            if(fusionSolid != null)
+            {
+                geometries.AddRange(fusionSolid.Decompose());
+            }
+            return geometries;
         }
     }
 }

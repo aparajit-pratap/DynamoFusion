@@ -493,7 +493,7 @@ void BRepFacesGeometryInfo(Ptr<UserInterface> ui, Ptr<BRepFaces> faces) {
 	}
 }
 
-void BRepBodyGeometryInfo(Ptr<UserInterface> ui,Ptr<BRepBody> body) {
+void BRepBodyGeometryInfo(Ptr<UserInterface> ui, Ptr<BRepBody> body) {
 
 
 	Ptr<BRepFaces> faces = body->faces();

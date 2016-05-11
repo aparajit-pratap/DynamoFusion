@@ -12,6 +12,7 @@ public:
 	
 	void LoadDynamo(const char* asm_location);
 	void CreateSelectionNode();
+	void CreateCustomSelectionNode();
 	
 //private:
 //	DynamoManagedWrapperPrivate* dynamoAPI;

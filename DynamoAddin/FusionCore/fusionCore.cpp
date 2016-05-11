@@ -1,3 +1,5 @@
+#include <objbase.h>
+
 #include "fusionCore.h"
 
 Ptr<SketchPoint> FusionCore::pointByCoordinates(double x, double y, double z)
@@ -33,9 +35,9 @@ std::vector<Ptr<BRepBody>> FusionCore::getSelectedEntities()
 	//
 	// Create array for storing objects
 	//
-	std::vector<Ptr<BRepBody>> objects;
+	std::vector<Ptr<BRepBody>> selected_objects;
 
-	if (selectionInput == nullptr)
+	/*if (selectionInput == nullptr)
 		return objects;
 
 	int selCount = selectionInput->selectionCount();
@@ -45,13 +47,15 @@ std::vector<Ptr<BRepBody>> FusionCore::getSelectedEntities()
 	//
 	for (size_t i = 0; i < selCount; i++)
 	{
-		objects.push_back(selectionInput->selection(i)->entity());
+		auto entity = selectionInput->selection(i)->entity();
+		
+		objects.push_back(entity);
+	}*/
 
-		//
-		// Get Geometry Info
-		//
-		//BRepBodyGeometryInfo(ui, objects[i]);
+	for (int i = 0; i < selCount; i++)
+	{
+		selected_objects.push_back(objects[i]);
 	}
-	return objects;
+	return selected_objects;
 }
 

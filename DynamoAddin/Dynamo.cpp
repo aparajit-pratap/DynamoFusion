@@ -21,7 +21,9 @@ Ptr<Application> app;
 Ptr<UserInterface> ui;
 
 // Global reference to selected objects in model workspaces
-Ptr<SelectionCommandInput> selectionInput;
+//Ptr<SelectionCommandInput> selectionInput;
+Ptr<BRepBody> * objects = nullptr;
+int selCount = 0;
 
 void BRepBodyGeometryInfo(Ptr<UserInterface> ui, Ptr<BRepBody> body);
 
@@ -73,39 +75,34 @@ public:
 			// Get Bodies here
 			// http://adndevblog.typepad.com/manufacturing/2016/02/array-of-fusion-objects-in-c.html
 			//
-			selectionInput = inputs->itemById("selectEnt");
+			Ptr<SelectionCommandInput> selectionInput = inputs->itemById("selectEnt");
 
 			auto dynamo_api = DynamoManagedWrapper::GetInstance();
-			dynamo_api->CreateSelectionNode();
+			//dynamo_api->CreateSelectionNode();
+			dynamo_api->CreateCustomSelectionNode();
 
-			//int selCount = selectionInput->selectionCount();
-
-			////
-			//// Create array for storing objects
-			////
-			//Ptr<BRepBody> * objects = new Ptr<BRepBody>[selCount];
-			////
-			//// Store the objects in the array
-			////
-			//for (size_t i = 0; i < selCount; i++)
-			//{
-			//	objects[i] = selectionInput->selection(i)->entity();
-
-			//	//
-			//	// Get Geometry Info
-			//	//
-			//	BRepBodyGeometryInfo(ui, objects[i]);
-
-			//}
+			selCount = selectionInput->selectionCount();
 
 			//
-			// Delete array
+			// Create array for storing objects
 			//
-			//for (size_t i = 0; i < selCount; i++)
-				//objects[i].detach();
-			//delete objects;
+			objects = new Ptr<BRepBody>[selCount];
+			//
+			// Store the objects in the array
+			//
+			for (size_t i = 0; i < selCount; i++)
+			{
+				objects[i] = selectionInput->selection(i)->entity();
+
+				//
+				// Get Geometry Info
+				//
+				//BRepBodyGeometryInfo(ui, objects[i]);
+			}
 		}
 		else {
+
+			// TODO: ASM location is not used currently
 			const char* asm_location =
 				"C:\\Users\pratapa.ADS\\AppData\\Local\\Autodesk\\webdeploy\\production\\8761ad41e24127c30f608621af9f94797e223b67";
 			auto dynamo_api = DynamoManagedWrapper::GetInstance();

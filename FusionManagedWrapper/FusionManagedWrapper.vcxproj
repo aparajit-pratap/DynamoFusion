@@ -103,6 +103,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalIncludeDirectories>$(SolutionDir)DynamoAddin/FusionCore;$(APPDATA)/Autodesk/Autodesk Fusion 360/API/CPP/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>C:\Users\pratapa.ADS\Documents\GitHub\Dynamo\extern\ProtoGeometry;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>core.lib;fusion.lib;cam.lib;DynamoAddin.lib;%(AdditionalDependencies)</AdditionalDependencies>

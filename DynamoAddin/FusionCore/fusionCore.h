@@ -5,7 +5,9 @@
 
 extern Ptr<Application> app;
 extern Ptr<UserInterface> ui; 
-extern Ptr<SelectionCommandInput> selectionInput;
+//extern Ptr<SelectionCommandInput> selectionInput;
+extern Ptr<BRepBody> * objects;
+extern int selCount;
 
 // The following ifdef block is the standard way of creating macros which make exporting 
 // from a DLL simpler. All files within this DLL are compiled with the DYNAMO_EXPORTS
