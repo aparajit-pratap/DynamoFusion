@@ -10,6 +10,39 @@ namespace DynaFusion
 {
     public static class Fusion
     {
+        static List<int> IDList = new List<int> { };
+
+        public static IEnumerable<FusionEntity> ImportGeometry(IEnumerable<Geometry> geometries)
+        {
+            var entities = new List<FusionEntity>();
+            var id = 1;
+            foreach (var geometry in geometries)
+            {
+                var curve = geometry as Curve;
+                if (curve != null)
+                {
+                    if (!IDList.Contains(id))
+                    {
+                        IDList.Add(id);
+                    }
+                    entities.Add(ToFusionCurve(curve, id));
+                    id++;
+                }
+            }
+            return entities;
+        }
+
+        private static FusionCurve ToFusionCurve(Curve curve, int indentifier)
+        {
+            var cv = curve as Circle;
+            if (cv != null)
+            {
+                var point = cv.CenterPoint;
+                return FusionCurve.createCircle(point.X, point.Y, point.Z, cv.Radius, indentifier);
+            }
+            return null;
+        }
+
         [IsVisibleInDynamoLibrary(false)]
         public static IEnumerable<Geometry> SelectEntity()
         {
@@ -22,30 +55,30 @@ namespace DynaFusion
             return geometries;
         }
 
-        public static IEnumerable<FusionEntity> ImportGeometry(IEnumerable<Geometry> geometries)
-        {
-            var entities = new List<FusionEntity>();
-            foreach (var geometry in geometries)
-            {
-                var curve = geometry as Curve;
-                if (curve != null)
-                {
-                    entities.Add(ToFusionCurve(curve));
-                }
-            }
-            return entities;
-        }
+        //public static IEnumerable<FusionEntity> ImportGeometry(IEnumerable<Geometry> geometries)
+        //{
+        //    var entities = new List<FusionEntity>();
+        //    foreach (var geometry in geometries)
+        //    {
+        //        var curve = geometry as Curve;
+        //        if (curve != null)
+        //        {
+        //            entities.Add(ToFusionCurve(curve));
+        //        }
+        //    }
+        //    return entities;
+        //}
 
-        private static FusionCurve ToFusionCurve(Curve curve)
-        {
-            var cv = curve as Circle;
-            if(cv != null)
-            {
-                var point = cv.CenterPoint;
-                return FusionCurve.createCircle(point.X, point.Y, point.Z, cv.Radius);
-            }
-            return null;
-        }
+        //private static FusionCurve ToFusionCurve(Curve curve)
+        //{
+        //    var cv = curve as Circle;
+        //    if(cv != null)
+        //    {
+        //        var point = cv.CenterPoint;
+        //        return FusionCurve.createCircle(point.X, point.Y, point.Z, cv.Radius);
+        //    }
+        //    return null;
+        //}
 
         private static IEnumerable<Geometry> ToDynamoGeometry(FusionEntity entity)
         {

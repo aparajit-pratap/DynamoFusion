@@ -215,16 +215,25 @@ FusionCurve::FusionCurve(SketchCircle* pCurve)
 	m_pCurve = pCurve;
 }
 
-FusionCurve^ FusionCurve::createCircle(double x, double y, double z, double r)
+//FusionCurve^ FusionCurve::createCircle(double x, double y, double z, double r)
+//{
+//	Ptr<Point3D> point = Point3D::create(x, y, z);
+//	Ptr<SketchCircle> circle = FusionCore::circleByPointRadius(point, r);
+//	
+//	return gcnew FusionCurve(circle.detach());
+//}
+
+FusionCurve^ FusionCurve::createCircle(double x, double y, double z, double r, int id)
 {
 	Ptr<Point3D> point = Point3D::create(x, y, z);
-	Ptr<SketchCircle> circle = FusionCore::circleByPointRadius(point, r);
-	
+	Ptr<SketchCircle> circle = FusionCore::circleByPointRadius(point, r, id);
+
 	return gcnew FusionCurve(circle.detach());
 }
 
 FusionCurve::~FusionCurve()
 {
-	m_pCurve->deleteMe();
+	/*if(m_pCurve != nullptr)
+		m_pCurve->deleteMe();*/
 }
 

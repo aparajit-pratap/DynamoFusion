@@ -26,7 +26,7 @@ class FUSION_API FusionCore
 	
 public:
 	Ptr<SketchPoint> static pointByCoordinates(double x, double y, double z);
-	Ptr<SketchCircle> static circleByPointRadius( Ptr<Point3D> point, double r);
+	Ptr<SketchCircle> static circleByPointRadius( Ptr<Point3D> point, double r, int idNumber);
 
 	std::vector<Ptr<BRepBody>> static getSelectedEntities();
 };

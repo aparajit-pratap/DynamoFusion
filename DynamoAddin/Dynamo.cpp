@@ -77,10 +77,6 @@ public:
 			//
 			Ptr<SelectionCommandInput> selectionInput = inputs->itemById("selectEnt");
 
-			auto dynamo_api = DynamoManagedWrapper::GetInstance();
-			//dynamo_api->CreateSelectionNode();
-			dynamo_api->CreateCustomSelectionNode();
-
 			selCount = selectionInput->selectionCount();
 
 			//
@@ -99,6 +95,11 @@ public:
 				//
 				//BRepBodyGeometryInfo(ui, objects[i]);
 			}
+
+			auto dynamo_api = DynamoManagedWrapper::GetInstance();
+			//dynamo_api->CreateSelectionNode();
+			dynamo_api->CreateCustomSelectionNode();
+
 		}
 		else {
 
@@ -110,11 +111,11 @@ public:
 		}
 		//----------------------------------------------------------------------------------------
 
-		if (ui) {
+		/*if (ui) {
 			std::stringstream ss;
 			ss << "command: " + parentDefinition->id() << " executed successfully";
 			ui->messageBox(ss.str());
-		}
+		}*/
 	}
 };
 
@@ -155,11 +156,11 @@ public:
 
 			//----------------------------------------------------------------------------------------
 
-			if (ui) {
+			/*if (ui) {
 				std::stringstream ss;
 				ss << "command: " + parentDefinition->id() << " created successfully";
 				ui->messageBox(ss.str());
-			}
+			}*/
 		}
 	}
 private:
@@ -220,7 +221,7 @@ extern "C" XI_EXPORT bool run(const char* context)
 
 	dropDown->controls()->addCommand(launchCmdDefinition);
 
-	ui->messageBox("A Dynamo command is successfully added to the panel in modeling workspace");
+	//ui->messageBox("A Dynamo command is successfully added to the panel in modeling workspace");
 
 	//----------------------------------------------------------------------------------------
 
@@ -238,7 +239,7 @@ extern "C" XI_EXPORT bool run(const char* context)
 
 	dropDown->controls()->addCommand(objectSelectDefinition);
 
-	ui->messageBox("A Select Object command is successfully added to the panel in modeling workspace");
+	//ui->messageBox("A Select Object command is successfully added to the panel in modeling workspace");
 
 	//----------------------------------------------------------------------------------------
 
@@ -247,11 +248,11 @@ extern "C" XI_EXPORT bool run(const char* context)
 
 extern "C" XI_EXPORT bool stop(const char* context)
 {
-	if (ui)
+	/*if (ui)
 	{
 		ui->messageBox("in stop");
 		ui = nullptr;
-	}
+	}*/
 
 	return true;
 }

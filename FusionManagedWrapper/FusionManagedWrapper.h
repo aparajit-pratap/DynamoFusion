@@ -63,7 +63,7 @@ namespace FusionManagedWrapper {
 	public ref class FusionCurve : FusionEntity
 	{
 	public:
-		static FusionCurve^ createCircle(double x, double y, double z, double r);
+		static FusionCurve^ createCircle(double x, double y, double z, double r, int id);
 	protected:
 		FusionCurve(SketchCircle* pCurve);
 		~FusionCurve();

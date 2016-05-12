@@ -81,7 +81,7 @@ namespace DynamoSandboxWrapper
         {
             try
             {
-                var nodeLibraryPath = @"C:\Users\pratapa.ADS\AppData\Roaming\Autodesk\Autodesk Fusion 360\API\AddIns\DynamoFusion\DynaFusion\bin\Debug\";
+                var nodeLibraryPath = @"C:\Users\pratapa.ADS\AppData\Roaming\Autodesk\Autodesk Fusion 360\API\AddIns\DynamoFusion\Debug\";
 
                 //var customNodeLibraryPath = @"C:\Users\pratapa.ADS\AppData\Roaming\Autodesk\Autodesk Fusion 360\API\AddIns\DynamoFusion\Debug\";
                 var customNodeLibraryPath = string.Empty;
